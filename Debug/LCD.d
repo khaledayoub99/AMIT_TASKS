@@ -5,7 +5,8 @@ LCD.d LCD.o: .././LCD.c \
  f:\avr_instale\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  f:\avr_instale\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  f:\avr_instale\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././LED.h .././DIO.h .././BIT_Math.h .././ATMEGA32_Regs.h .././STD.h
+ .././LCD.h .././LCD_Cfg.h .././DIO.h .././BIT_Math.h \
+ .././ATMEGA32_Regs.h .././STD.h
 
 f:\avr_instale\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -19,7 +20,9 @@ f:\avr_instale\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basi
 
 f:\avr_instale\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././LED.h:
+.././LCD.h:
+
+.././LCD_Cfg.h:
 
 .././DIO.h:
 

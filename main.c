@@ -14,11 +14,12 @@
 
 int main(void)
 {
+	
     LCD_INIT();
-	LCD_WrtieNumber(-911);
-	/*LCD_WrtieString("      ENG");
+	/*LCD_WrtieNumber(-911);*/
+	LCD_WrtieString("      ENG");
 	LCD_GoTo(1,0);
-	LCD_WrtieString(" KHALED AYOUB");*/
+	LCD_WrtieString(" KHALED AYOUB");
     while (1) 
     {
     }

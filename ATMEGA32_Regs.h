@@ -1,5 +1,5 @@
-#ifndef ATMEGA32_REG_H_
-#define ATMEGA32_REG_H_
+#ifndef ATMEGA32_REG_H
+#define ATMEGA32_REG_H
 
 #include "STD.h"
 
@@ -19,4 +19,4 @@
 #define PIND  (*(volatile uint8*)(0x30))
 #define DDRD  (*(volatile uint8*)(0x31))
 
-#endif /* ATMEGA32_REG_H_ */
+#endif // ATMEGA32_REG_H

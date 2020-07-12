@@ -229,3 +229,40 @@ void DIO_ToqqlePin  (uint8 port , uint8 pin)
 		break;
 	}
 }
+
+void DIO_SetPullUp	(uint8 port , uint8 Pin)
+{
+	
+	switch(port)
+	{
+
+		case DIO_PORTA :
+
+		SET_BIT(PORTA,Pin);
+
+		break;
+
+		case DIO_PORTB :
+
+		SET_BIT(PORTB,Pin);
+
+		break;
+
+		case DIO_PORTC :
+
+		SET_BIT(PORTC,Pin);
+
+		break;
+
+		case DIO_PORTD :
+
+		SET_BIT(PORTD,Pin);
+
+		break;
+
+		default:
+		break;
+	}
+		
+	
+}

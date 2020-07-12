@@ -40,6 +40,7 @@ void DIO_ReadPin    (uint8 port , uint8 pin , uint8* val);
 
 void DIO_ToqqlePin  (uint8 port , uint8 pin);
 
+void DIO_SetPullUp	(uint8 port , uint8 pin);
 
 
 #endif //DIO_H

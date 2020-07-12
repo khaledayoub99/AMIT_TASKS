@@ -38,9 +38,11 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../7Segment.c \
+../ADC.c \
 ../Button.c \
 ../BUZZER.c \
 ../DIO.c \
+../KeyPad.c \
 ../LCD.c \
 ../LED.c \
 ../main.c
@@ -54,36 +56,44 @@ ASM_SRCS +=
 
 OBJS +=  \
 7Segment.o \
+ADC.o \
 Button.o \
 BUZZER.o \
 DIO.o \
+KeyPad.o \
 LCD.o \
 LED.o \
 main.o
 
 OBJS_AS_ARGS +=  \
 7Segment.o \
+ADC.o \
 Button.o \
 BUZZER.o \
 DIO.o \
+KeyPad.o \
 LCD.o \
 LED.o \
 main.o
 
 C_DEPS +=  \
 7Segment.d \
+ADC.d \
 Button.d \
 BUZZER.d \
 DIO.d \
+KeyPad.d \
 LCD.d \
 LED.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
 7Segment.d \
+ADC.d \
 Button.d \
 BUZZER.d \
 DIO.d \
+KeyPad.d \
 LCD.d \
 LED.d \
 main.d
@@ -109,6 +119,13 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
+./ADC.o: .././ADC.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)F:\AVR_INSTALE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./Button.o: .././Button.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -124,6 +141,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./DIO.o: .././DIO.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)F:\AVR_INSTALE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./KeyPad.o: .././KeyPad.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)F:\AVR_INSTALE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

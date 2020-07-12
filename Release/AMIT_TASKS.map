@@ -5,7 +5,7 @@ f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/av
 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               F:/AVR_INSTALE/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                              main.o (__do_copy_data)
+                              KeyPad.o (__do_copy_data)
 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
                               f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o) (__udivmodhi4)
 
@@ -25,6 +25,10 @@ Discarded input sections
  .text._7Segment0_OFF
                 0x00000000        0xa 7Segment.o
  .comment       0x00000000       0x31 7Segment.o
+ .text          0x00000000        0x0 ADC.o
+ .data          0x00000000        0x0 ADC.o
+ .bss           0x00000000        0x0 ADC.o
+ .comment       0x00000000       0x31 ADC.o
  .text          0x00000000        0x0 Button.o
  .data          0x00000000        0x0 Button.o
  .bss           0x00000000        0x0 Button.o
@@ -60,15 +64,20 @@ Discarded input sections
                 0x00000000       0x20 DIO.o
  .text.DIO_ReadPort
                 0x00000000       0x24 DIO.o
- .text.DIO_ReadPin
-                0x00000000       0x32 DIO.o
  .text.DIO_ToqqlePin
                 0x00000000       0x60 DIO.o
+ .text          0x00000000        0x0 KeyPad.o
+ .data          0x00000000        0x0 KeyPad.o
+ .bss           0x00000000        0x0 KeyPad.o
  .text          0x00000000        0x0 LCD.o
  .data          0x00000000        0x0 LCD.o
  .bss           0x00000000        0x0 LCD.o
+ .text.LCD_WrtieString
+                0x00000000       0x26 LCD.o
  .text.LCD_Clear
                 0x00000000        0x6 LCD.o
+ .text.LCD_GoTo
+                0x00000000       0x28 LCD.o
  .text.LCD_WrtieNumber
                 0x00000000       0x48 LCD.o
  .text          0x00000000        0x0 LED.o
@@ -180,9 +189,11 @@ Linker script and memory map
 
 LOAD F:/AVR_INSTALE/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32/avr5/crtatmega32.o
 LOAD 7Segment.o
+LOAD ADC.o
 LOAD Button.o
 LOAD BUZZER.o
 LOAD DIO.o
+LOAD KeyPad.o
 LOAD LCD.o
 LOAD LED.o
 LOAD main.o
@@ -295,7 +306,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x416
+.text           0x00000000      0x592
  *(.vectors)
  .vectors       0x00000000       0x54 F:/AVR_INSTALE/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -381,29 +392,35 @@ END GROUP
  .text.DIO_WritePin
                 0x0000014c       0xca DIO.o
                 0x0000014c                DIO_WritePin
+ .text.DIO_ReadPin
+                0x00000216       0x32 DIO.o
+                0x00000216                DIO_ReadPin
+ .text.DIO_SetPullUp
+                0x00000248       0x60 DIO.o
+                0x00000248                DIO_SetPullUp
+ .text.KeyPad_Init
+                0x000002a8       0x98 KeyPad.o
+                0x000002a8                KeyPad_Init
+ .text.KeyPad_GetValue
+                0x00000340       0xa8 KeyPad.o
+                0x00000340                KeyPad_GetValue
  .text.LCD_WrtieCommand
-                0x00000216       0x90 LCD.o
-                0x00000216                LCD_WrtieCommand
+                0x000003e8       0x90 LCD.o
+                0x000003e8                LCD_WrtieCommand
  .text.LCD_INIT
-                0x000002a6       0x82 LCD.o
-                0x000002a6                LCD_INIT
+                0x00000478       0x82 LCD.o
+                0x00000478                LCD_INIT
  .text.LCD_WrtieChar
-                0x00000328       0x7e LCD.o
-                0x00000328                LCD_WrtieChar
- .text.LCD_WrtieString
-                0x000003a6       0x26 LCD.o
-                0x000003a6                LCD_WrtieString
- .text.LCD_GoTo
-                0x000003cc       0x28 LCD.o
-                0x000003cc                LCD_GoTo
+                0x000004fa       0x7e LCD.o
+                0x000004fa                LCD_WrtieChar
  .text.startup.main
-                0x000003f4       0x1e main.o
-                0x000003f4                main
-                0x00000412                . = ALIGN (0x2)
+                0x00000578       0x16 main.o
+                0x00000578                main
+                0x0000058e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000412        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000412                _exit
-                0x00000412                exit
+ .fini9         0x0000058e        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000058e                _exit
+                0x0000058e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -422,38 +439,39 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000412        0x4 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000058e        0x4 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000416                _etext = .
+                0x00000592                _etext = .
 
-.data           0x00800060       0x18 load address 0x00000416
+.data           0x00800060       0x10 load address 0x00000592
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00800060       0x18 main.o
+ .rodata.KeyPad_Values
+                0x00800060       0x10 KeyPad.o
+                0x00800060                KeyPad_Values
  *(.gnu.linkonce.r*)
-                0x00800078                . = ALIGN (0x2)
-                0x00800078                _edata = .
-                0x00800078                PROVIDE (__data_end, .)
+                0x00800070                . = ALIGN (0x2)
+                0x00800070                _edata = .
+                0x00800070                PROVIDE (__data_end, .)
 
-.bss            0x00800078        0x0
+.bss            0x00800070        0x0
                 [!provide]                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00000416                __data_load_start = LOADADDR (.data)
-                0x0000042e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000592                __data_load_start = LOADADDR (.data)
+                0x000005a2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800078        0x0
+.noinit         0x00800070        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800078                _end = .
+                0x00800070                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -497,6 +515,7 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 DIO.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 KeyPad.o
  .comment       0x00000030       0x31 LCD.o
  .comment       0x00000030       0x31 main.o
 

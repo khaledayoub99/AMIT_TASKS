@@ -1,6 +1,8 @@
 #ifndef LCD_H
 #define LCD_H
 
+#define  F_CPU 16000000
+#include <util/delay.h>
 #include "LCD_Cfg.h"
 
 void LCD_INIT				(		void		 );

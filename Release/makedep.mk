@@ -4,11 +4,15 @@
 
 7Segment.c
 
+ADC.c
+
 Button.c
 
 BUZZER.c
 
 DIO.c
+
+KeyPad.c
 
 LCD.c
 

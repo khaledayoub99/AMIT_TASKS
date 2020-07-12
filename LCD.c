@@ -1,6 +1,5 @@
 
-#define  F_CPU 16000000
-#include <util/delay.h>
+
 #include "LCD.h"
 
 
@@ -18,7 +17,7 @@ void LCD_INIT			(void )
 	_delay_ms(100);
 	
 	LCD_WrtieCommand(0x38);
-	LCD_WrtieCommand(0x0F);
+	LCD_WrtieCommand(0x0C);
 	LCD_WrtieCommand(0x01);
 	
 	_delay_ms(20);
@@ -46,7 +45,7 @@ void LCD_INIT			(void )
 	LCD_WrtieCommand(0x32);
 	LCD_WrtieCommand(0x28);
 	
-	LCD_WrtieCommand(0x0E);
+	LCD_WrtieCommand(0x0C);
 	LCD_WrtieCommand(0x01);
 	LCD_WrtieCommand(0x06);
     LCD_WrtieCommand(0x02);

@@ -1,15 +1,13 @@
 
-
-
 #include "KeyPad.h"
 #define F_CPU 16000000
 #include <util/delay.h>
 
 
-const uint8 KeyPad_Values[4][4] = {{'1','4','7','*'},
-									{'2','5','8','0'},
-										{'3','6','9','/'},
-											{'-','+','c','='}};
+const uint8 KeyPad_Values[4][4] = {{'1','2','3','+'},
+								   {'4','5','6','-'},
+								   {'7','8','9','c'},
+								   {'*','0','/','='}};
 void	KeyPad_Init(void)
 {
 	
@@ -52,7 +50,7 @@ uint8	KeyPad_GetValue(void)
 			DIO_ReadPin(KeyPad_PORT,LOC_Row,&temp);
 			if (!temp)
 			{
-				value = KeyPad_Values[LOC_Row - ROW_INIT][LOC_Coloum - COL_INIT];
+				value = KeyPad_Values[LOC_Coloum - COL_INIT][LOC_Row - ROW_INIT];
 				while(!temp)
 				{
 					DIO_ReadPin(KeyPad_PORT,LOC_Row,&temp);

@@ -64,11 +64,17 @@ Discarded input sections
                 0x00000000       0x20 DIO.o
  .text.DIO_ReadPort
                 0x00000000       0x24 DIO.o
+ .text.DIO_ReadPin
+                0x00000000       0x32 DIO.o
  .text.DIO_ToqqlePin
                 0x00000000       0x60 DIO.o
  .text          0x00000000        0x0 KeyPad.o
  .data          0x00000000        0x0 KeyPad.o
  .bss           0x00000000        0x0 KeyPad.o
+ .text.KeyPad_GetValue
+                0x00000000       0xb4 KeyPad.o
+ .rodata.KeyPad_Values
+                0x00000000       0x10 KeyPad.o
  .text          0x00000000        0x0 LCD.o
  .data          0x00000000        0x0 LCD.o
  .bss           0x00000000        0x0 LCD.o
@@ -78,8 +84,6 @@ Discarded input sections
                 0x00000000        0x6 LCD.o
  .text.LCD_GoTo
                 0x00000000       0x28 LCD.o
- .text.LCD_WrtieNumber
-                0x00000000       0x48 LCD.o
  .text          0x00000000        0x0 LED.o
  .data          0x00000000        0x0 LED.o
  .bss           0x00000000        0x0 LED.o
@@ -113,8 +117,6 @@ Discarded input sections
  .bss           0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
- .text.libgcc.div
-                0x00000000       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text.libgcc   0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
@@ -161,8 +163,6 @@ Discarded input sections
  .bss           0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
- .text.libgcc.div
-                0x00000000       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc   0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
@@ -306,7 +306,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x592
+.text           0x00000000      0x56c
  *(.vectors)
  .vectors       0x00000000       0x54 F:/AVR_INSTALE/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -392,35 +392,39 @@ END GROUP
  .text.DIO_WritePin
                 0x0000014c       0xca DIO.o
                 0x0000014c                DIO_WritePin
- .text.DIO_ReadPin
-                0x00000216       0x32 DIO.o
-                0x00000216                DIO_ReadPin
  .text.DIO_SetPullUp
-                0x00000248       0x60 DIO.o
-                0x00000248                DIO_SetPullUp
+                0x00000216       0x60 DIO.o
+                0x00000216                DIO_SetPullUp
  .text.KeyPad_Init
-                0x000002a8       0x98 KeyPad.o
-                0x000002a8                KeyPad_Init
- .text.KeyPad_GetValue
-                0x00000340       0xa8 KeyPad.o
-                0x00000340                KeyPad_GetValue
+                0x00000276       0x98 KeyPad.o
+                0x00000276                KeyPad_Init
  .text.LCD_WrtieCommand
-                0x000003e8       0x90 LCD.o
-                0x000003e8                LCD_WrtieCommand
+                0x0000030e       0x90 LCD.o
+                0x0000030e                LCD_WrtieCommand
  .text.LCD_INIT
-                0x00000478       0x82 LCD.o
-                0x00000478                LCD_INIT
+                0x0000039e       0x82 LCD.o
+                0x0000039e                LCD_INIT
  .text.LCD_WrtieChar
-                0x000004fa       0x7e LCD.o
-                0x000004fa                LCD_WrtieChar
+                0x00000420       0x7e LCD.o
+                0x00000420                LCD_WrtieChar
+ .text.LCD_WrtieNumber
+                0x0000049e       0x68 LCD.o
+                0x0000049e                LCD_WrtieNumber
  .text.startup.main
-                0x00000578       0x16 main.o
-                0x00000578                main
-                0x0000058e                . = ALIGN (0x2)
+                0x00000506       0x12 main.o
+                0x00000506                main
+ .text.libgcc.div
+                0x00000518       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+                0x00000518                _div
+                0x00000518                __divmodhi4
+ .text.libgcc.div
+                0x00000540       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000540                __udivmodhi4
+                0x00000568                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000058e        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000058e                _exit
-                0x0000058e                exit
+ .fini9         0x00000568        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000568                _exit
+                0x00000568                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -439,39 +443,36 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000058e        0x4 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000568        0x4 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000592                _etext = .
+                0x0000056c                _etext = .
 
-.data           0x00800060       0x10 load address 0x00000592
+.data           0x00800060        0x0 load address 0x0000056c
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.KeyPad_Values
-                0x00800060       0x10 KeyPad.o
-                0x00800060                KeyPad_Values
  *(.gnu.linkonce.r*)
-                0x00800070                . = ALIGN (0x2)
-                0x00800070                _edata = .
-                0x00800070                PROVIDE (__data_end, .)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
 
-.bss            0x00800070        0x0
+.bss            0x00800060        0x0
                 [!provide]                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00000592                __data_load_start = LOADADDR (.data)
-                0x000005a2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000056c                __data_load_start = LOADADDR (.data)
+                0x0000056c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800070        0x0
+.noinit         0x00800060        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800070                _end = .
+                0x00800060                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0

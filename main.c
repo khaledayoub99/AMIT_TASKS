@@ -15,20 +15,20 @@
 
 int main(void)
 {
-	uint8 value=0;
+	//uint8 value=0;
 	KeyPad_Init();
     LCD_INIT();
-	/*LCD_WrtieNumber(-911);
-	
+	LCD_WrtieNumber(-91);
+	/*
 	LCD_WrtieString("      ENG");
 	LCD_GoTo(1,0);
 	LCD_WrtieString(" KHALED AYOUB");
 	*/
     while (1) 
     {
-		value = KeyPad_GetValue();
+		/*value = KeyPad_GetValue();
 		if(value){
 		LCD_WrtieChar(value);
-		}
+		}*/
     }
 }

@@ -170,16 +170,21 @@ void LCD_GoTo 			(uint8 row, uint8 col)
 
 void LCD_WrtieNumber(int32 num )
 {
-	int32 temp = 0;
-	temp =num;
-	if(temp<0)
+	int32 temp = 1;
+	
+	if(num<0)
 	{
-		temp*=-1;
+		num*=-1;
 		LCD_WrtieChar('-');
 	}
 	
-	while (temp > 0) {
-		LCD_WrtieChar(temp % 10+48);
+	while (num > 0) {
+		temp=((temp*10)+(num % 10));
+		num /= 10;
+	}
+	while(temp > 1 )
+	{
+		LCD_WrtieChar(((temp%10)+48));
 		temp /= 10;
 	}
 	

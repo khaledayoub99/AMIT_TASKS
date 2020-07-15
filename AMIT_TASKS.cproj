@@ -159,6 +159,15 @@
     <Compile Include="DIO.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="EXternal_INT.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EXternal_INT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EXternal_INT_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="KeyPad.c">
       <SubType>compile</SubType>
     </Compile>

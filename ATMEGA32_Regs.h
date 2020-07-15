@@ -3,6 +3,21 @@
 
 #include "STD.h"
 
+/************EXTERNAL_REGISTER******************/
+
+
+#define SREG	(*(volatile uint8*)(0x5F))
+
+#define GICR	(*(volatile uint8*)(0x5B))
+ 
+#define MCUCR	(*(volatile uint8*)(0x55))
+
+#define MCUCSR	(*(volatile uint8*)(0x54))
+
+#define GIFR	(*(volatile uint8*)(0x5A))
+
+
+/************DIO_REGISTER******************/
 #define PORTA (*(volatile uint8*)(0x3B))
 #define PINA  (*(volatile uint8*)(0x39))
 #define DDRA  (*(volatile uint8*)(0x3A))

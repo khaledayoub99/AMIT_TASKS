@@ -62,38 +62,55 @@ Discarded input sections
                 0x00000000       0x20 DIO.o
  .text.DIO_WritePort
                 0x00000000       0x20 DIO.o
+ .text.DIO_WritePin
+                0x00000000       0xca DIO.o
  .text.DIO_ReadPort
                 0x00000000       0x24 DIO.o
  .text.DIO_ReadPin
                 0x00000000       0x32 DIO.o
- .text.DIO_ToqqlePin
+ .text.DIO_SetPullUp
                 0x00000000       0x60 DIO.o
+ .text          0x00000000        0x0 EXternal_INT.o
+ .data          0x00000000        0x0 EXternal_INT.o
+ .bss           0x00000000        0x0 EXternal_INT.o
+ .text.ExternalINT1_Init
+                0x00000000       0x18 EXternal_INT.o
+ .text.ExternalINT2_Init
+                0x00000000       0x12 EXternal_INT.o
  .text          0x00000000        0x0 KeyPad.o
  .data          0x00000000        0x0 KeyPad.o
  .bss           0x00000000        0x0 KeyPad.o
+ .text.KeyPad_Init
+                0x00000000       0x98 KeyPad.o
  .text.KeyPad_GetValue
                 0x00000000       0xb4 KeyPad.o
  .rodata.KeyPad_Values
                 0x00000000       0x10 KeyPad.o
+ .comment       0x00000000       0x31 KeyPad.o
  .text          0x00000000        0x0 LCD.o
  .data          0x00000000        0x0 LCD.o
  .bss           0x00000000        0x0 LCD.o
+ .text.LCD_WrtieCommand
+                0x00000000       0x90 LCD.o
+ .text.LCD_INIT
+                0x00000000       0x82 LCD.o
+ .text.LCD_WrtieChar
+                0x00000000       0x7e LCD.o
  .text.LCD_WrtieString
                 0x00000000       0x26 LCD.o
  .text.LCD_Clear
                 0x00000000        0x6 LCD.o
  .text.LCD_GoTo
                 0x00000000       0x28 LCD.o
+ .text.LCD_WrtieNumber
+                0x00000000       0x68 LCD.o
+ .comment       0x00000000       0x31 LCD.o
  .text          0x00000000        0x0 LED.o
  .data          0x00000000        0x0 LED.o
  .bss           0x00000000        0x0 LED.o
- .text.LED0_Init
-                0x00000000        0xa LED.o
  .text.LED0_ON  0x00000000        0xa LED.o
  .text.LED0_OFF
                 0x00000000        0xa LED.o
- .text.LED0_toggle
-                0x00000000        0x8 LED.o
  .text.LED1_Init
                 0x00000000        0xa LED.o
  .text.LED1_ON  0x00000000        0xa LED.o
@@ -108,7 +125,6 @@ Discarded input sections
                 0x00000000        0xa LED.o
  .text.LED2_toggle
                 0x00000000        0x8 LED.o
- .comment       0x00000000       0x31 LED.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -117,6 +133,8 @@ Discarded input sections
  .bss           0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+ .text.libgcc.div
+                0x00000000       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text.libgcc   0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
@@ -163,6 +181,8 @@ Discarded input sections
  .bss           0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc.mul
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
+ .text.libgcc.div
+                0x00000000       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc   0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
  .text.libgcc.prologue
                 0x00000000        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
@@ -193,6 +213,7 @@ LOAD ADC.o
 LOAD Button.o
 LOAD BUZZER.o
 LOAD DIO.o
+LOAD EXternal_INT.o
 LOAD KeyPad.o
 LOAD LCD.o
 LOAD LED.o
@@ -306,7 +327,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x56c
+.text           0x00000000      0x238
  *(.vectors)
  .vectors       0x00000000       0x54 F:/AVR_INSTALE/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -363,7 +384,6 @@ END GROUP
  *(.init9)
  *(.text)
  .text          0x0000007e        0x4 F:/AVR_INSTALE/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega32/avr5/crtatmega32.o
-                0x0000007e                __vector_1
                 0x0000007e                __vector_12
                 0x0000007e                __bad_interrupt
                 0x0000007e                __vector_6
@@ -389,42 +409,32 @@ END GROUP
  .text.DIO_SetPinDir
                 0x00000082       0xca DIO.o
                 0x00000082                DIO_SetPinDir
- .text.DIO_WritePin
-                0x0000014c       0xca DIO.o
-                0x0000014c                DIO_WritePin
- .text.DIO_SetPullUp
-                0x00000216       0x60 DIO.o
-                0x00000216                DIO_SetPullUp
- .text.KeyPad_Init
-                0x00000276       0x98 KeyPad.o
-                0x00000276                KeyPad_Init
- .text.LCD_WrtieCommand
-                0x0000030e       0x90 LCD.o
-                0x0000030e                LCD_WrtieCommand
- .text.LCD_INIT
-                0x0000039e       0x82 LCD.o
-                0x0000039e                LCD_INIT
- .text.LCD_WrtieChar
-                0x00000420       0x7e LCD.o
-                0x00000420                LCD_WrtieChar
- .text.LCD_WrtieNumber
-                0x0000049e       0x68 LCD.o
-                0x0000049e                LCD_WrtieNumber
+ .text.DIO_ToqqlePin
+                0x0000014c       0x60 DIO.o
+                0x0000014c                DIO_ToqqlePin
+ .text.SET_GlobalINTS
+                0x000001ac        0x8 EXternal_INT.o
+                0x000001ac                SET_GlobalINTS
+ .text.ExternalINT0_Init
+                0x000001b4       0x18 EXternal_INT.o
+                0x000001b4                ExternalINT0_Init
+ .text.LED0_Init
+                0x000001cc        0xa LED.o
+                0x000001cc                LED0_Init
+ .text.LED0_toggle
+                0x000001d6        0x8 LED.o
+                0x000001d6                LED0_toggle
  .text.startup.main
-                0x00000506       0x12 main.o
-                0x00000506                main
- .text.libgcc.div
-                0x00000518       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
-                0x00000518                _div
-                0x00000518                __divmodhi4
- .text.libgcc.div
-                0x00000540       0x28 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
-                0x00000540                __udivmodhi4
-                0x00000568                . = ALIGN (0x2)
+                0x000001de        0xa main.o
+                0x000001de                main
+ .text.__vector_1
+                0x000001e8       0x4c main.o
+                0x000001e8                __vector_1
+                0x00000234                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000568        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000568                _exit
-                0x00000568                exit
+ .fini9         0x00000234        0x0 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000234                _exit
+                0x00000234                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -443,11 +453,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000568        0x4 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000234        0x4 f:/avr_instale/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000056c                _etext = .
+                0x00000238                _etext = .
 
-.data           0x00800060        0x0 load address 0x0000056c
+.data           0x00800060        0x0 load address 0x00000238
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -465,8 +475,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x0000056c                __data_load_start = LOADADDR (.data)
-                0x0000056c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000238                __data_load_start = LOADADDR (.data)
+                0x00000238                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -516,8 +526,8 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 DIO.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 KeyPad.o
- .comment       0x00000030       0x31 LCD.o
+ .comment       0x00000030       0x31 EXternal_INT.o
+ .comment       0x00000030       0x31 LED.o
  .comment       0x00000030       0x31 main.o
 
 .note.gnu.avr.deviceinfo

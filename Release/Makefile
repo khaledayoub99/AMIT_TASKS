@@ -42,6 +42,7 @@ C_SRCS +=  \
 ../Button.c \
 ../BUZZER.c \
 ../DIO.c \
+../EXternal_INT.c \
 ../KeyPad.c \
 ../LCD.c \
 ../LED.c \
@@ -60,6 +61,7 @@ ADC.o \
 Button.o \
 BUZZER.o \
 DIO.o \
+EXternal_INT.o \
 KeyPad.o \
 LCD.o \
 LED.o \
@@ -71,6 +73,7 @@ ADC.o \
 Button.o \
 BUZZER.o \
 DIO.o \
+EXternal_INT.o \
 KeyPad.o \
 LCD.o \
 LED.o \
@@ -82,6 +85,7 @@ ADC.d \
 Button.d \
 BUZZER.d \
 DIO.d \
+EXternal_INT.d \
 KeyPad.d \
 LCD.d \
 LED.d \
@@ -93,6 +97,7 @@ ADC.d \
 Button.d \
 BUZZER.d \
 DIO.d \
+EXternal_INT.d \
 KeyPad.d \
 LCD.d \
 LED.d \
@@ -141,6 +146,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./DIO.o: .././DIO.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)F:\AVR_INSTALE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./EXternal_INT.o: .././EXternal_INT.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)F:\AVR_INSTALE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "F:\AVR_INSTALE\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -57,9 +57,7 @@ uint8 Button2_GetValue(void)
 	uint8 value = 0;
 	DIO_ReadPin (DIO_PORTD , DIO_PIN2 , &value);
 	
-
 	while((GET_BIT(PIND,2)));
-	
 
 	_delay_ms(20);
 	
